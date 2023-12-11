@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eating@Mac</title>
+<style>
+  body {
+    font-family: 'Arial Rounded MT Bold', sans-serif;
+    background-color: rgb(65, 9, 9); 
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  header {
+    margin-top: 5%;
+    border-radius: 15px;
+    background-color: rgb(255, 223, 186);
+    padding: 10px 300px; 
+  }
+
+  nav ul {
+    list-style: none; 
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center; 
+    padding: 0;
+    margin: 0; 
+  }
+
+  nav li {
+    margin: 0 10px; 
+  }
+
+  nav button {
+    background-color: transparent;
+    border: none;
+    padding: 20px 20px;
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    border-radius: 15px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    cursor: pointer; 
+    transition: 0.1s;
+  }
+
+  nav button:hover {
+    background-color: rgb(218, 169, 114);
+  }
+
+  nav button img {
+    max-width: 100px; 
+    margin-bottom: px; 
+  }
+
+  nav hr {
+    border: 0;
+    height: 1px;
+    background-color: #333; 
+    width: 80%; 
+    height: 3px;
+    margin: 5px 0; 
+  }
+
+  nav h4 {
+    font-size: 20px; 
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+    font-weight: 100;
+    color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); 
+    margin: 0; 
+    padding: 10px 0; 
+    text-transform: uppercase; 
+    letter-spacing: 1.5px; 
+  }
+  
+  
+  
+.logo-space {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 20px;
+  background-color: rgb(122, 0, 60);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 30px; 
+}
+
+.logo-space h1 {
+  font-size: 70px; 
+  font-family: 'Arial Rounded MT Bold', sans-serif; 
+  font-weight: 400;
+  color: rgb(255, 255, 255); 
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2); 
+  margin: 0;
+  padding: 10px 0; 
+  text-transform: uppercase; 
+  letter-spacing: 1.5px;
+}
+
+
+.logo-space .tagline {
+  font-size: 20px; 
+  color: #666; 
+  font-weight: 300; 
+  letter-spacing: 1px; 
+}
+
+.search-bar {
+    width: 100%; 
+    padding: 20px;
+    display: flex; 
+    justify-content: center;
+}
+
+
+
+.search-bar input[type="search"] {
+  width: 100%; 
+  max-width: 600px;
+  padding: 10px 20px; 
+  font-size: 16px;
+  border: 1px solid #ccc; 
+  border-radius: 25px; 
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+  outline: none;
+  transition: all 0.1s ease;
+}
+
+.search-bar input[type="search"]:hover,
+.search-bar input[type="search"]:focus {
+  border-color: #aaa; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15); 
+}
+
+.search-bar input[type="search"]::placeholder {
+  color: #888; 
+}
+
+#logo {
+    width: 50px;
+}
+  
+  
+</style>
+</head>
+<body>
+    
+    <div class="logo-space">
+        <img id = "logo" src="../assets/mac-logo.png" alt="">
+        <h1>EATING <b>@</b> MAC</h1>
+        <div class="search-bar">
+          <input type="search" placeholder="Search...">
+        </div>
+    </div>
+<div class="container">
+  <header>
+    <nav>
+      <ul>
+        <li>
+            <button>
+                <img src="../assets/browse-all.png" alt="">
+                <hr>
+                <h4>Browse All</h4>
+            </button>
+        </li>
+        <li>
+            <button>
+                <img src="../assets/food-types.png" alt="">
+                <hr>
+                <h4>Food Types</h4>
+            </button>
+        </li>
+        <li>
+            <button>
+                <img src="../assets/maps.png" alt="">
+                <hr>
+                <h4>Map</h4>
+            </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+
+</div>
+</body>
+</html>
