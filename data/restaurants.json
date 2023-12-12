@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Williams Fresh Cafe",
+        "location": "Health Science Building",
+        "rating": "★★★★☆",
+        "openingTime": "12:00 PM",
+        "closingTime": "1:00 AM",
+        "openUntil": "2:30 PM",
+        "minimumPurchase": "10",
+        "dietaryOptions": ["Halal", "Vegetarian"],
+        "distance": "1",
+        "imageSrc": "../assets/restaurants/williams-cafe-health-sci.jpg"
+    },
+    {
+        "name": "Centro @ Commons",
+        "location": "Commons Building",
+        "rating": "★★★☆☆",
+        "openingTime": "9:00 AM",
+        "closingTime": "11:00 PM",
+        "openUntil": "3:00 PM",
+        "minimumPurchase": "15",
+        "dietaryOptions": ["Vegan"],
+        "distance": "2",
+        "imageSrc": "../../assets/restaurants/williams-cafe-health-sci.jpg"
+    },
+    {
+        "name": "Centro @ Commons",
+        "location": "Commons Building",
+        "rating": "★★★☆☆",
+        "openingTime": "9:00 AM",
+        "closingTime": "12:00 AM",
+        "openUntil": "3:00 PM",
+        "minimumPurchase": "15",
+        "dietaryOptions": ["Vegan", "Kosher"],
+        "distance": "2",
+        "imageSrc": "../../assets/restaurants/williams-cafe-health-sci.jpg"
+    }
+]

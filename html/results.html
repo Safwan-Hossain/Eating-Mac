@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eating@Mac</title>
+<link href="../assets/fontawesome/css/fontawesome.css" rel="stylesheet">
+<link href="../assets/fontawesome/css/brands.css" rel="stylesheet">
+<link href="../assets/fontawesome/css/solid.css" rel="stylesheet">
+<link href="../style/results.css" rel="stylesheet">
+</head>
+<body>
+    <div class="logo-space">
+        <img id = "logo" src="../assets/mac-logo.png" alt="">
+        <h1>  EATING <b>@</b> MAC</h1>
+        <div class="search-bar">
+          <input type="search" placeholder="Search...">
+        </div>
+    </div>
+    <div id="content-area">
+        <div class="filter-panel">
+            <h3>Filters</h3>            
+            <div class="filter-option">
+                <input type="checkbox" id="open-now" name="open-now">
+                <label for="open-now">Open Now</label>
+            </div>
+            <div class="filter-option">
+                <label for="distance-range">Max Distance: <span id="distance-range-value">10</span> km</label>
+                <input type="range" id="distance-range" min="1" max="20" step="1" oninput="updateDistanceValue(this.value)">
+            </div>
+            <div class="filter-option">
+                <label for="price-range">Max Price: <span id="price-range-value">30</span>$</label>
+                <input type="range" id="price-range" min="5" max="50" step="5" oninput="updateRangeValue(this.value)">
+            </div>
+            <div class="filter-option">
+                <label for="dietary">Dietary Options</label>
+                <select id="dietary">
+                    <option value="all">All</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="halal">Halal</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="result-list">
+            <button class="restaurant-button">
+                <img src="../assets/restaurants/williams-cafe-health-sci.jpg" alt="Restaurant A">
+                <div class="title-area">
+                    <span class="restaurant-name">Williams Fresh Cafe</span>
+                    <span >Health Science Building</span>
+                    <div class="review-stars">★★★★☆</div>
+                </div>
+                <div class="info-panel">
+                    <p class="opening-times">
+                        <i class="fa-solid fa-clock"></i> Open Until 2:30pm
+                    </p>
+                    <p class="minimum-purchase">
+                        <i class="fa-solid fa-sack-dollar"></i> Minimum Purchase: 10$
+                    </p>
+                    <p class="dietery-options">
+                        Dietery Options: 
+                        <i class="fa-solid fa-square-h" title="Halal"></i>
+                        <i class="fa-solid fa-leaf" title="Vegeterian"></i>
+                    </p>
+                    <p class="distance"><i class="fa-solid fa-map-pin"></i> 1km </p>
+                </div>
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        function updateRangeValue(value) {
+            document.getElementById('price-range-value').innerText = value;
+        }
+        function updateDistanceValue(value) {
+            document.getElementById('distance-range-value').innerText = value;
+        }
+    </script>
+    <script  type="module" src="../scripts/main.js"></script>
+</body>
+</html>
