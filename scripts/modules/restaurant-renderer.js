@@ -29,9 +29,20 @@ function createRestaurantElement(data) {
     const infoPanel = document.createElement('div');
     infoPanel.className = 'info-panel';
 
+    const openingTime = data.openingTime;
+    const closingTime = data.closingTime;
+    const isRestaurantOpen = isTimeInRange(openingTime, closingTime);
+
     const openingTimesP = document.createElement('p');
     openingTimesP.className = 'opening-times';
-    openingTimesP.innerHTML = `<i class="fa-solid fa-clock"></i> Open Until ${data.openUntil}`;
+
+    if (isRestaurantOpen) {
+        openingTimesP.innerHTML = `<i class="fa-solid fa-clock"></i> Open Until ${data.closingTime}`;
+    }
+    else {
+        openingTimesP.innerHTML = `<i class="fa-solid fa-clock"></i> Closed | Opens at ${data.openingTime}`;
+    }
+
     infoPanel.appendChild(openingTimesP);
 
     const minimumPurchaseP = document.createElement('p');
@@ -74,4 +85,51 @@ const dieteryOptionsMap = {
     "halal": 'fa-solid fa-square-h',
     "vegetarian": 'fa-solid fa-leaf',
     "kosher": 'fa-brands fa-kickstarter',
+}
+
+function getCurrentTimeFormatted() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+}
+
+function isTimeInRange(startTimeStr, endTimeStr) {
+    function timeStringToDate(timeStr) {
+        timeStr = convertTo24Hour(timeStr);
+        const [hours, minutes] = timeStr.split(':').map(Number);
+        const time = new Date();
+        time.setHours(hours, minutes, 0, 0);
+        return time;
+    }
+    const currentTimeStr = getCurrentTimeFormatted();
+    const currentTime = currentTimeStr ? timeStringToDate(currentTimeStr) : new Date();
+    let startTime = timeStringToDate(startTimeStr);
+    let endTime = timeStringToDate(endTimeStr);
+
+    if (endTime <= startTime) {
+        endTime.setDate(endTime.getDate() + 1); 
+
+        if (currentTime < startTime) {
+            currentTime.setDate(currentTime.getDate() - 1);
+        }
+    }
+
+    return currentTime >= startTime && currentTime <= endTime;
+}
+
+function convertTo24Hour(timeStr) {
+    const [time, modifier] = timeStr.split(' ');
+    let [hours, minutes] = time.split(':');
+
+    // Correcting the hours if it's 12 AM or PM
+    if (hours === '12') {
+        hours = '00';
+    }
+
+    if (modifier === 'PM') {
+        hours = parseInt(hours, 10) + 12;
+    }
+
+    return `${hours}:${minutes}`;
 }

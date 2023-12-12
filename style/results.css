@@ -125,7 +125,7 @@ body {
 
 .info-panel {
   margin-left: auto; /* Pushes the info panel to the left */
-  width: 230px;
+  width: 290px;
   display: flex;
   flex-direction: column;
   text-align: start;  
