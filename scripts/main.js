@@ -11,11 +11,28 @@ async function init() {
     document.getElementById('distance-range').addEventListener('input', filterRestaurants);
     document.getElementById('price-range').addEventListener('input', filterRestaurants);
     document.getElementById('dietary').addEventListener('change', filterRestaurants);
+
+
+    const restaurantButtonsContainer = document.querySelector('.result-list');
+
+    if (restaurantButtonsContainer) {
+        restaurantButtonsContainer.addEventListener('click', handleRestaurantButtonClick);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', init);
 
+function handleRestaurantButtonClick(event) {
+    const clickedButton = event.target.closest('.restaurant-button');
 
+    if (clickedButton) {
+        // Get the restaurant name from the clicked button or any relevant data
+        const restaurantName = clickedButton.querySelector('.restaurant-name').textContent;
+
+        // Redirect to the restaurant detail page with the restaurant name as a query parameter
+        window.location.href = `restaurant-detail.html?restaurant=${encodeURIComponent(restaurantName)}`;
+    }
+}
 
 function filterRestaurants() {
     fetchRestaurants('../data/restaurants.json').then((restaurants) => applyFilters(restaurants));
@@ -45,7 +62,6 @@ function applyFilters(restaurants) {
 function displayRestaurants(filteredRestaurants) {
     const contentArea = document.getElementsByClassName('result-list')[0];
     contentArea.innerHTML = ''; 
-
     
     renderRestaurants(filteredRestaurants, '.result-list');
 

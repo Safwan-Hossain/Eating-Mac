@@ -71,12 +71,22 @@ function createRestaurantElement(data) {
     button.appendChild(infoPanel);
 
     return button;
+
+}
+
+function createLinkedRestaurantElement(data) {
+    // Create a link to the restaurant detail page
+    const restaurantLink = document.createElement('a');
+    restaurantLink.href = `restaurant-detail.html?restaurant=${encodeURIComponent(data.name)}`;
+    restaurantLink.appendChild(createRestaurantElement(data));
+
+    return restaurantLink;
 }
 
 export function renderRestaurants(restaurants, containerSelector) {
     const container = document.querySelector(containerSelector);
     restaurants.forEach(restaurant => {
-        container.appendChild(createRestaurantElement(restaurant));
+        container.appendChild(createLinkedRestaurantElement(restaurant));
     });
 }
 

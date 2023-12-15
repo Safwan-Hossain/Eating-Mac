@@ -1,0 +1,81 @@
+body {
+    font-family: 'Arial Rounded MT Bold', sans-serif;
+    background-color: rgb(65, 9, 9);
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  
+  /* ====== LOGO SPACE ====== */
+  
+  .logo-space {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    padding-top: 10px;
+    background-color: rgb(122, 0, 60);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+  }
+  
+  .logo-space h1 {
+    display: flex;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 10px 0;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  #logo {
+    width: 50px;
+    margin-right: 10px;
+  }
+  
+  .title-area {
+    display: flex;
+    flex-direction: column;
+    /* align-self: start;
+    margin-top: 3%; */
+    text-align: start;
+  }
+  
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: black;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: rgb(218, 169, 114);
+    color:  #333;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(212, 153, 85);
+}
