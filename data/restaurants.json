@@ -7,9 +7,11 @@
         "closingTime": "1:00 AM",
         "openUntil": "2:30 PM",
         "minimumPurchase": "10",
-        "dietaryOptions": ["Halal", "Vegetarian"],
+        "dietaryOptions": ["Halal", "Vegetarian", "Vegan"],
         "distance": "1",
-        "imageSrc": "../assets/restaurants/williams-cafe-health-sci.jpg"
+        "imageSrc": "../assets/restaurants/williams-cafe-health-sci.jpg",
+        "googleMapsLink": "https://www.google.com/maps/place/Health+Science+Centre/@43.2599565,-79.9368171,15z/data=!3m1!5s0x882c9b5db3805b23:0x894771ff88242d23!4m10!1m2!2m1!1smcmaster+health+science+centre!3m6!1s0x882c9b52bb434335:0x464c4231f9508abb!8m2!3d43.2599565!4d-79.9177627!15sCh5tY21hc3RlciBoZWFsdGggc2NpZW5jZSBjZW50cmUiA4gBAZIBFXVuaXZlcnNpdHlfZGVwYXJ0bWVudOABAA!16s%2Fg%2F11fz9xzryf?entry=ttu"
+        
     },
     {
         "name": "Centro @ Commons",
@@ -19,20 +21,22 @@
         "closingTime": "11:00 PM",
         "openUntil": "3:00 PM",
         "minimumPurchase": "15",
-        "dietaryOptions": ["Vegan"],
+        "dietaryOptions": ["Halal", "Vegetarian", "Vegan"],
         "distance": "2",
-        "imageSrc": "../../assets/restaurants/williams-cafe-health-sci.jpg"
+        "imageSrc": "../../assets/restaurants/williams-cafe-health-sci.jpg",
+        "googleMapsLink": "https://www.google.com/maps/place/Centro/@43.2655886,-79.9217753,17z/data=!3m1!4b1!4m6!3m5!1s0x882c85ff1543fcd5:0x6bd51fb877f54ab4!8m2!3d43.2655886!4d-79.9192004!16s%2Fg%2F11bwnbjwwp?entry=ttu"
     },
     {
-        "name": "Centro @ Commons",
-        "location": "Commons Building",
+        "name": "Bistro @ Mary Keys Residence",
+        "location": "Mary Keys Residence",
         "rating": "★★★☆☆",
         "openingTime": "7:00 PM",
         "closingTime": "12:00 AM",
         "openUntil": "3:00 PM",
         "minimumPurchase": "15",
-        "dietaryOptions": ["Vegan", "Kosher"],
+        "dietaryOptions": ["Halal", "Vegetarian", "Vegan", "Kosher"],
         "distance": "2",
-        "imageSrc": "../../assets/restaurants/williams-cafe-health-sci.jpg"
+        "imageSrc": "../../assets/restaurants/williams-cafe-health-sci.jpg",
+        "googleMapsLink": "https://www.google.com/maps/place/East+Meets+West+Bistro/@43.2623837,-79.9234985,18z/data=!3m1!4b1!4m6!3m5!1s0x882c84ac53ac080f:0xfd058a2866aa7849!8m2!3d43.2623837!4d-79.9225615!16s%2Fg%2F11bwqgchxk?entry=ttu"
     }
 ]

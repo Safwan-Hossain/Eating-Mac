@@ -1,0 +1,215 @@
+[
+    {
+      "restaurantName": "Williams Fresh Cafe",
+      "menu": [
+        {
+          "name": "Pasta Carbonara",
+          "price": 15.99,
+          "halal": false,
+          "vegetarian": true,
+          "vegan": false,
+          "nutritionalInfo": true,
+          "allergens": ["Wheat", "Dairy", "Eggs"],
+          "calories": 600,
+          "fat": 20,
+          "protein": 5,
+          "sugar": 3
+        },
+        {
+          "name": "Margherita Pizza",
+          "price": 7.99,
+          "halal": true,
+          "vegetarian": true,
+          "vegan": false,
+          "nutritionalInfo": true,
+          "allergens": ["Wheat", "Dairy"],
+          "calories": 800,
+          "fat": 30,
+          "protein": 2,
+          "sugar": 5
+        },
+        {
+          "name": "Vegan Burger",
+          "price": 9.99,
+          "halal": true,
+          "vegetarian": true,
+          "vegan": true,
+          "nutritionalInfo": true,
+          "allergens": ["Wheat"],
+          "calories": 450,
+          "fat": 10,
+          "protein": 10,
+          "sugar": 2
+        },
+        {
+          "name": "Chicken Caesar Salad",
+          "price": 11.99,
+          "halal": false,
+          "vegetarian": false,
+          "vegan": false,
+          "nutritionalInfo": true,
+          "allergens": ["Dairy"],
+          "calories": 200,
+          "fat": 5,
+          "protein": 5,
+          "sugar": 3
+        },
+        {
+          "name": "Vegetable Stir Fry",
+          "price": 13.49,
+          "halal": false,
+          "vegetarian": true,
+          "vegan": true,
+          "nutritionalInfo": true,
+          "allergens": [],
+          "calories": 350,
+          "fat": 10,
+          "protein": 5,
+          "sugar": 3
+        }
+      ]
+    },
+
+    {
+        "restaurantName": "Centro @ Commons",
+        "menu": [
+          {
+            "name": "Pasta Carbonara",
+            "price": 15.99,
+            "halal": false,
+            "vegetarian": true,
+            "vegan": false,
+            "nutritionalInfo": true,
+            "allergens": ["Wheat", "Dairy", "Eggs"],
+            "calories": 600,
+            "fat": 20,
+            "protein": 5,
+            "sugar": 3
+          },
+          {
+            "name": "Margherita Pizza",
+            "price": 7.99,
+            "halal": true,
+            "vegetarian": true,
+            "vegan": false,
+            "nutritionalInfo": true,
+            "allergens": ["Wheat", "Dairy"],
+            "calories": 800,
+            "fat": 30,
+            "protein": 2,
+            "sugar": 5
+          },
+          {
+            "name": "Vegan Burger",
+            "price": 9.99,
+            "halal": true,
+            "vegetarian": true,
+            "vegan": true,
+            "nutritionalInfo": true,
+            "allergens": ["Wheat"],
+            "calories": 450,
+            "fat": 10,
+            "protein": 10,
+            "sugar": 2
+          },
+          {
+            "name": "Chicken Caesar Salad",
+            "price": 11.99,
+            "halal": false,
+            "vegetarian": false,
+            "vegan": false,
+            "nutritionalInfo": true,
+            "allergens": ["Dairy"],
+            "calories": 200,
+            "fat": 5,
+            "protein": 5,
+            "sugar": 3
+          },
+          {
+            "name": "Vegetable Stir Fry",
+            "price": 13.49,
+            "halal": false,
+            "vegetarian": true,
+            "vegan": true,
+            "nutritionalInfo": true,
+            "allergens": [],
+            "calories": 350,
+            "fat": 10,
+            "protein": 5,
+            "sugar": 3
+          }
+        ]
+      },
+
+      {
+        "restaurantName": "Bistro @ Mary Keys Residence",
+        "menu": [
+          {
+            "name": "Pasta Carbonara",
+            "price": 15.99,
+            "halal": false,
+            "vegetarian": true,
+            "vegan": false,
+            "nutritionalInfo": true,
+            "allergens": ["Wheat", "Dairy", "Eggs"],
+            "calories": 600,
+            "fat": 20,
+            "protein": 5,
+            "sugar": 3
+          },
+          {
+            "name": "Margherita Pizza",
+            "price": 7.99,
+            "halal": true,
+            "vegetarian": true,
+            "vegan": false,
+            "nutritionalInfo": true,
+            "allergens": ["Wheat", "Dairy"],
+            "calories": 800,
+            "fat": 30,
+            "protein": 2,
+            "sugar": 5
+          },
+          {
+            "name": "Vegan Burger",
+            "price": 9.99,
+            "halal": true,
+            "vegetarian": true,
+            "vegan": true,
+            "nutritionalInfo": true,
+            "allergens": ["Wheat"],
+            "calories": 450,
+            "fat": 10,
+            "protein": 10,
+            "sugar": 2
+          },
+          {
+            "name": "Chicken Caesar Salad",
+            "price": 11.99,
+            "halal": false,
+            "vegetarian": false,
+            "vegan": false,
+            "nutritionalInfo": true,
+            "allergens": ["Dairy"],
+            "calories": 200,
+            "fat": 5,
+            "protein": 5,
+            "sugar": 3
+          },
+          {
+            "name": "Vegetable Stir Fry",
+            "price": 13.49,
+            "halal": false,
+            "vegetarian": true,
+            "vegan": true,
+            "nutritionalInfo": true,
+            "allergens": [],
+            "calories": 350,
+            "fat": 10,
+            "protein": 5,
+            "sugar": 3
+          }
+        ]
+      }
+  ]
+  

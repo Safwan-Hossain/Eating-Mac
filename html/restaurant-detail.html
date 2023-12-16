@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eating@Mac</title>
+<link href="../assets/fontawesome/css/fontawesome.css" rel="stylesheet">
+<link href="../assets/fontawesome/css/brands.css" rel="stylesheet">
+<link href="../assets/fontawesome/css/solid.css" rel="stylesheet">
+<link href="../style/restaurant.css" rel="stylesheet">
+</head>
+<body>
+    <div class="logo-space">
+        <img id = "logo" src="../assets/mac-logo.png" alt="">
+        <h1>  EATING <b>@</b> MAC</h1>
+        <div id="h2-divider">
+             <h2 id="restaurant-heading"></h2>
+             <button id="mapLink"><img src="../assets/mapicon.png" alt=""></button>
+        </div>
+    </div>
+
+    <div id="content-section">
+        <div class="filter-panel">
+            <h3>Filters</h3>            
+            <div class="filter-option">
+                <input type="checkbox" id="open-now" name="open-now">
+                <label for="open-now">Open Now</label>
+            </div>
+            <div class="filter-option">
+                <label for="distance-range">Max Distance: <span id="distance-range-value">10</span> km</label>
+                <input type="range" id="distance-range" min="1" max="20" step="1" oninput="updateDistanceValue(this.value)">
+            </div>
+            <div class="filter-option">
+                <label for="price-range">Max Price: <span id="price-range-value">30</span>$</label>
+                <input type="range" id="price-range" min="5" max="50" step="5" oninput="updateRangeValue(this.value)">
+            </div>
+            <div class="filter-option">
+                <label for="dietary">Dietary Options</label>
+                <select id="dietary">
+                    <option value="all">All</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="halal">Halal</option>
+                </select>
+            </div>
+        </div>
+        
+        <div id="row-of-elements">
+            <div class="restaurant-details">
+                <p>Location: Health Science Building</p>
+                <p>Hours: 8:00 AM - 5:00 PM</p>
+                <p>Rating: ★★★★☆</p>
+                <p>Dietary Options: <i class="fa-solid fa-square-h" title="Halal"></i><i class="fa-solid fa-leaf" title="Vegetarian"></i></p>
+                <p>Price Range: $10 - $30</p>
+            </div>
+
+            <div class="menu-list">
+                <!-- JS script code adds menu items here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="menuModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeMenuModal()">&times;</span>
+            <h2 id="menuModalTitle"></h2>
+            <p id="menuModalInfo"></p>
+        </div>
+    </div>
+
+    <div class="result-list">
+
+    </div>
+
+    <script>
+
+        function closeMenuModal() {
+            // Hide the modal
+            const modal = document.getElementById('menuModal');
+            modal.style.display = 'none';
+        }
+
+        function updateRangeValue(value) {
+            document.getElementById('price-range-value').innerText = value;
+        }
+        function updateDistanceValue(value) {
+            document.getElementById('distance-range-value').innerText = value;
+        }
+
+    </script>
+
+
+    <script  type="module">
+        let menuItemsData;
+        import {fetchRestaurants} from '../scripts/modules/data-fetcher.js'
+        import { fetchMenu } from '../scripts/modules/data-fetcher.js';
+
+        const dieteryOptionsMap = {
+            vegetarian: 'fa-solid fa-leaf',
+            vegan: 'fa-solid fa-carrot',
+            halal: 'fa-solid fa-square-h',
+        };
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const restaurantName = urlParams.get('restaurant');
+
+            // Fetch the restaurant data based on the name
+            fetchRestaurants('../data/restaurants.json').then(restaurants => {
+                const selectedRestaurant = restaurants.find(restaurant => restaurant.name === restaurantName);
+
+                if (selectedRestaurant) {
+                    const restaurantHeading = document.getElementById('restaurant-heading');
+                    restaurantHeading.textContent = selectedRestaurant.name;
+
+                    displayRestaurantDetails(selectedRestaurant);
+
+                    fetchMenu(selectedRestaurant.name).then(menuItems => {
+                        menuItemsData = menuItems; // Assign menuItems to menuItemsData
+                        displayMenu(menuItems);
+                    });
+
+                    // Add event listener to the mapLink button
+                    const mapLinkButton = document.getElementById('mapLink');
+                    mapLinkButton.addEventListener('click', () => {
+                        openGoogleMaps(selectedRestaurant.googleMapsLink);
+                    });
+
+                    // Add event listeners for filter options
+                    document.getElementById('dietary').addEventListener('change', () => {
+                        applyFilters();
+                    });
+
+                    document.getElementById('price-range').addEventListener('input', () => {
+                        applyFilters();
+                    });
+
+
+                    const menuList = document.querySelector('.menu-list');
+                    menuList.addEventListener('click', (event) => {
+                        const target = event.target;
+                        if (target.classList.contains('fa-info-circle')) {
+                            const menuItem = target.closest('.menu-item');
+                            const itemIndex = Array.from(menuItem.parentNode.children).indexOf(menuItem);
+                            openMenuModal(menuItemsData[itemIndex]); // Use menuItemsData here
+                        }
+                        const closeButton = document.querySelector('.close');
+                        closeButton.addEventListener('click', closeMenuModal);
+                    });
+
+                } else {
+                    console.error('Restaurant not found.');
+                }
+            });
+        });
+        
+        function openGoogleMaps(googleMapsLink) {
+            // Open Google Maps with the specified link
+            window.open(googleMapsLink, '_blank');
+        }
+
+        function displayRestaurantDetails(restaurant) {
+            const detailsDiv = document.createElement('div');
+            detailsDiv.className = 'restaurant-details';
+
+            const locationP = document.createElement('p');
+            locationP.textContent = `Location: ${restaurant.location}`;
+            detailsDiv.appendChild(locationP);
+
+            const hoursP = document.createElement('p');
+            hoursP.textContent = `Hours: ${restaurant.openingTime} - ${restaurant.closingTime}`;
+            detailsDiv.appendChild(hoursP);
+
+            const ratingP = document.createElement('p');
+            ratingP.textContent = `Rating: ${restaurant.rating}`;
+            detailsDiv.appendChild(ratingP);
+
+            const dietaryOptionsP = document.createElement('p');
+            dietaryOptionsP.textContent = 'Dietary Options: ';
+            restaurant.dietaryOptions.forEach(option => {
+                const className = dieteryOptionsMap[option.toLowerCase()];
+                const icon = document.createElement('i');
+                icon.className = className;
+                icon.title = option;
+                icon.style.marginLeft = '3px';
+                dietaryOptionsP.appendChild(icon);
+            });
+            detailsDiv.appendChild(dietaryOptionsP);
+
+            // Append the detailsDiv to the restaurant details container
+            const restaurantDetailsContainer = document.querySelector('.restaurant-details');
+            restaurantDetailsContainer.innerHTML = ''; // Clear existing content
+            restaurantDetailsContainer.appendChild(detailsDiv);
+        }
+
+        function openMenuModal(item) {
+            // Extract nutritional information
+            const allergens = item.allergens || [];
+            const calories = item.calories || 0;
+            const fat = item.fat || 0;
+            const protein = item.fiber || 0;
+            const sugar = item.sugar || 0;
+
+            // Display the information in the modal
+            const modalTitle = document.getElementById('menuModalTitle');
+            modalTitle.textContent = item.name;
+
+            const modalInfo = document.getElementById('menuModalInfo');
+            modalInfo.innerHTML = `
+                <p>Allergens: ${allergens.join(', ')}</p>
+                <p>Calories: ${calories}</p>
+                <p>Fat: ${fat}g</p>
+                <p>Protein: ${protein}g</p>
+                <p>Sugar: ${sugar}g</p>
+            `;
+
+            // Show the modal
+            const modal = document.getElementById('menuModal');
+            modal.style.display = 'block';
+        }
+
+        function displayMenu(menu) {
+            const menuList = document.querySelector('.menu-list');
+
+            menuList.innerHTML = '';
+
+            menu.forEach(item => {
+                const menuItem = document.createElement('div');
+                menuItem.className = 'menu-item';
+
+                const itemDetails = document.createElement('div');
+                const itemName = document.createElement('p');
+                itemName.textContent = item.name;
+                const itemPrice = document.createElement('p');
+                itemPrice.textContent = `$${item.price.toFixed(2)}`;
+
+                itemDetails.appendChild(itemName);
+                itemDetails.appendChild(itemPrice);
+
+                const itemIcons = document.createElement('div');
+                if (item.halal) {
+                    itemIcons.innerHTML += '<i class="fa-solid fa-square-h" title="Halal"></i>';
+                }
+                if (item.vegetarian) {
+                    itemIcons.innerHTML += '<i class="fa-solid fa-leaf" title="Vegetarian"></i>';
+                }
+                if (item.vegan) {
+                    itemIcons.innerHTML += '<i class="fa-solid fa-carrot" title="Vegan"></i>';
+                }
+                if (item.nutritionalInfo) {
+                    itemIcons.innerHTML += '<i class="fa-solid fa-info-circle" title="More Info"></i>';
+                }
+
+
+                menuItem.appendChild(itemDetails);
+                menuItem.appendChild(itemIcons);
+
+                menuList.appendChild(menuItem);
+            });
+        }
+
+        // Define applyFilters function
+        function applyFilters() {
+            if (!menuItemsData || !menuItemsData.filter) {
+                // Handle the case where menuItemsData is not defined or doesn't have a filter method
+                console.error('Menu items data is not available or does not have a filter method.');
+                return;
+            }
+
+            // Get selected filter values
+            const selectedDietaryOption = document.getElementById('dietary').value;
+            const maxPrice = document.getElementById('price-range').value;
+
+            // Filter menu items based on selected options
+            const filteredMenuItems = menuItemsData.filter(item => {
+                // Check dietary option
+                if (selectedDietaryOption !== 'all' && !item[selectedDietaryOption]) {
+                    return false;
+                }
+
+                // Check price range
+                if (item.price > maxPrice) {
+                    return false;
+                }
+
+                return true;
+            });
+
+            // Update the displayed menu with filtered items
+            displayMenu(filteredMenuItems);
+        }
+
+    </script>
+    <script  type="module" src="../scripts/main.js"></script>
+</body>
+</html>

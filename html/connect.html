@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eating@Mac</title>
+<link href="../assets/fontawesome/css/fontawesome.css" rel="stylesheet">
+<link href="../assets/fontawesome/css/brands.css" rel="stylesheet">
+<link href="../assets/fontawesome/css/solid.css" rel="stylesheet">
+<link href="../style/connect.css" rel="stylesheet">
+
+<h2>Restaurant Feedback Form</h2>
+</head>
+<body>
+<form id="feedbackForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">McMaster Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="type">Type of Inquiry:</label>
+    <select id="type" name="type">
+        <option value="inquiry">Inquiry</option>
+        <option value="complaint">Complaint</option>
+    </select>
+
+    <label for="restaurant">Select Restaurant:</label>
+    <select id="restaurant" name="restaurant">
+        <option value="centro">Centro @ Commons</option>
+        <option value="bistro">Bistro @ Mary Keyes Residence</option>
+        <option value="williams">Williams Fresh Cafe</option>
+    </select>
+
+    <label for="message">Complaint or Questions:</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
+
+    <button type="button" onclick="submitForm()">Submit</button>
+</form>
+
+<script>
+    function submitForm() {
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var type = document.getElementById('type').value;
+        var restaurant = document.getElementById('restaurant').value;
+        var message = document.getElementById('message').value;
+
+        // You can perform additional validation if needed
+
+        // Displaying the submitted information (you can replace this with your own logic)
+        alert("Submitted Information:\nName: " + name + "\nEmail: " + email + "\nType: " + type + "\nRestaurant: " + restaurant + "\nMessage: " + message);
+    }
+</script>
+
+</body>
+</html>

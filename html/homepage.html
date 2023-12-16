@@ -41,7 +41,7 @@
             </button>
         </li>
         <li>
-            <button id="map-button">
+            <button id="map-button" onclick="openGoogleMaps()">
                 <img src="../assets/maps.png" alt="">
                 <hr>
                 <h4>Map</h4>
@@ -60,5 +60,30 @@
 
 
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('browse-all-button').addEventListener('click', function () {
+        window.location.href = 'results.html';
+        });
+    
+        document.getElementById('open-now-button').addEventListener('click', function () {
+            window.location.href = 'results.html?filter=open-now';
+            document.getElementById('open-now').checked;
+        });
+
+        document.getElementById('chat-button').addEventListener('click', function () {
+        window.location.href = 'connect.html';
+        });
+    })
+
+    function openGoogleMaps() {
+        var latitude = 43.2617; 
+        var longitude = -79.9228; 
+        // Open Google Maps with the specified coordinates
+        window.location.href = `https://www.google.com/maps?q=${latitude},${longitude}`;
+    }
+
+</script>
 </body>
 </html>
