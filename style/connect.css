@@ -9,6 +9,10 @@ body {
   
   /* ====== LOGO SPACE ====== */
   
+  h2 {
+    text-align: center;
+    font-size: 40px;
+  }
   .logo-space {
     width: 100%;
     display: flex;
@@ -47,12 +51,35 @@ body {
   }
   
 
-form {
+  form {
+    align-self: center;
     background-color: #fff;
-    padding: 20px;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+    width: 40%;
+    margin: 0px auto; /* Center the form with vertical margin */
+  }
+  
+  #formMessage {
+    display: none;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    width: 40%;
+    margin: 20px auto; /* Center the form with vertical margin */
+    color: white;
+  }
+
+  .form-message-success {
+    background-color: green;
+  }
+
+  .form-message-error {
+    background-color: red;
+  }
 
 label {
     display: block;
@@ -78,4 +105,10 @@ button {
 
 button:hover {
     background-color: rgb(212, 153, 85);
+}
+
+#message {
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 100px;
 }

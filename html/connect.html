@@ -12,6 +12,7 @@
 <h2>Restaurant Feedback Form</h2>
 </head>
 <body>
+<div id="formMessage"></div>
 <form id="feedbackForm">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
@@ -46,11 +47,21 @@
         var restaurant = document.getElementById('restaurant').value;
         var message = document.getElementById('message').value;
 
-        // You can perform additional validation if needed
+        var formMessage = document.getElementById('formMessage');
 
-        // Displaying the submitted information (you can replace this with your own logic)
-        alert("Submitted Information:\nName: " + name + "\nEmail: " + email + "\nType: " + type + "\nRestaurant: " + restaurant + "\nMessage: " + message);
-    }
+        if (!name || !email || !type || !restaurant || !message) {
+            formMessage.className = 'form-message-error'; // Apply error styles
+            formMessage.textContent = 'Please fill in all fields.';
+            formMessage.style.display = 'block';
+            return;
+        }
+
+        // If validation passes
+        formMessage.className = 'form-message-success'; // Apply success styles
+        formMessage.textContent = 'Form submitted successfully.';
+        formMessage.style.display = 'block';
+        //  alert("Submitted Information:\nName: " + name + "\nEmail: " + email + "\nType: " + type + "\nRestaurant: " + restaurant + "\nMessage: " + message);
+}
 </script>
 
 </body>
