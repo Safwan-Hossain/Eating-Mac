@@ -34,7 +34,7 @@ function applyFilters(restaurants) {
         const isRestaurantOpen = isTimeInRange(restaurant.openingTime, restaurant.closingTime);
         const distanceCheck = restaurant.distance <= maxDistance;
         const priceCheck = restaurant.minimumPurchase <= maxPrice;
-        const openCheck = !isOpen || (isOpen && isRestaurantOpen); // TODO
+        const openCheck = !isOpen || (isOpen && isRestaurantOpen);
         const dietaryCheck = dietaryOption === 'all' || restaurant.dietaryOptions.some(option => option.toLowerCase() === dietaryOption.toLowerCase());
 
         return distanceCheck && priceCheck && openCheck && dietaryCheck;
