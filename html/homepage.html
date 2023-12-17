@@ -12,7 +12,7 @@
         <img id = "logo" src="../assets/mac-logo.png" alt="">
         <h1>EATING <b>@</b> MAC</h1>
         <div class="search-bar">
-          <input type="search" placeholder="Search...">
+          <input id = "search-bar-input" type="search" placeholder="Search...">
         </div>
     </div>
 <div class="container">
@@ -27,7 +27,7 @@
             </button>
         </li>
         <li>
-            <button>
+            <button id="food-types-button">
                 <img src="../assets/food-types.png" alt="">
                 <hr>
                 <h4>Food Types</h4>
@@ -63,10 +63,22 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+
+        document.getElementById('search-bar-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                const inputValue = this.value;
+                window.location.href = 'results.html?content=' + encodeURIComponent(inputValue);
+            }
+        });
+
         document.getElementById('browse-all-button').addEventListener('click', function () {
-        window.location.href = 'results.html';
+            window.location.href = 'results.html';
         });
     
+        document.getElementById('food-types-button').addEventListener('click', function () {
+            window.location.href = 'categories.html';
+        });
+
         document.getElementById('open-now-button').addEventListener('click', function () {
             window.location.href = 'results.html?filter=open-now';
             document.getElementById('open-now').checked;

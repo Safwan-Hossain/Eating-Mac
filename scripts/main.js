@@ -1,23 +1,84 @@
 import { fetchRestaurants } from './modules/data-fetcher.js';
 import { renderRestaurants } from './modules/restaurant-renderer.js';
 
-let restaurants = [];
-async function init() {
-    // restaurants = await fetchRestaurants('../data/restaurants.json');
-    // renderRestaurants(restaurants, '.result-list');
 
+async function init() {
+
+
+    const searchContent = getQueryParam('content');
+    const filter = getQueryParam('filter');
+    const foodCategory = getQueryParam('category');
+    if (searchContent !== null && searchContent.trim() !== '') {
+        document.getElementById('search-bar-input').textContent = searchContent;
+        document.getElementById('search-bar-input').value = searchContent;
+        filterRestaurants();
+    }
+    if (filter === 'open-now') {
+        document.getElementById('open-now').checked = true;
+        filterRestaurants();
+    }
+    else if (foodCategory != null && foodCategory != 'all') {
+        const dropdown = document.getElementById('food-type');
+        const options = dropdown.options;
+        const allOptions = [];
+
+        for (let i = 0; i < options.length; i++) {
+            allOptions.push(options[i].text);  
+        }
+        const index = allOptions.findIndex(option => 
+            option.toLowerCase() === foodCategory.toLowerCase()
+        );
+
+        if (index != -1) {
+            document.getElementById('food-type').value = allOptions[index].toLowerCase();
+            filterRestaurants();
+        }
+    }
+    else {
+
+        const restaurants = await fetchRestaurants('../data/restaurants.json');
+        renderRestaurants(restaurants, '.result-list');
+    }
+
+
+
+ 
+    document.getElementById('search-bar-input').addEventListener('input', filterRestaurants);
 
     document.getElementById('open-now').addEventListener('change', filterRestaurants);
     document.getElementById('distance-range').addEventListener('input', filterRestaurants);
     document.getElementById('price-range').addEventListener('input', filterRestaurants);
     document.getElementById('dietary').addEventListener('change', filterRestaurants);
+    document.getElementById('food-type').addEventListener('change', filterRestaurants);
 
+
+    
+    function getQueryParam(name) {
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        return urlSearchParams.get(name);
+    }
+    
+    function deleteParam(parameterToRemove) {
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        
+        urlSearchParams.delete(parameterToRemove);
+        // Construct the new URL without the deleted parameter
+        const newUrl = window.location.protocol + "//" + 
+        window.location.host + 
+        window.location.pathname + 
+        '?' + urlSearchParams.toString();
+
+        // Update the URL
+        history.pushState({ path: newUrl }, '', newUrl);
+    }
 
     const restaurantButtonsContainer = document.querySelector('.result-list');
 
     if (restaurantButtonsContainer) {
         restaurantButtonsContainer.addEventListener('click', handleRestaurantButtonClick);
     }
+
+
 }
 
 document.addEventListener('DOMContentLoaded', init);
@@ -35,28 +96,40 @@ function handleRestaurantButtonClick(event) {
 }
 
 function filterRestaurants() {
-    fetchRestaurants('../data/restaurants.json').then((restaurants) => applyFilters(restaurants));
-    
+    fetchRestaurants('../data/restaurants.json').then((fetchedData) => applyFilters(fetchedData));
 }
 
-function applyFilters(restaurants) {
+async function applyFilters(restaurantData) {
     const isOpen = document.getElementById('open-now').checked;
     const maxDistance = parseInt(document.getElementById('distance-range').value, 10);
     const maxPrice = parseInt(document.getElementById('price-range').value, 10);
     const dietaryOption = document.getElementById('dietary').value;
+    const foodType = document.getElementById('food-type').value;
+
+    const menus = await fetchRestaurants('../data/menus.json');
 
 
-    const filteredRestaurants = restaurants.filter(restaurant => {
-    
+
+    const filteredRestaurants = restaurantData.filter(restaurant => {
+        const menu = menus.find(menuItem => menuItem.restaurantName === restaurant.name).menu;
+        
         const isRestaurantOpen = isTimeInRange(restaurant.openingTime, restaurant.closingTime);
         const distanceCheck = restaurant.distance <= maxDistance;
         const priceCheck = restaurant.minimumPurchase <= maxPrice;
         const openCheck = !isOpen || (isOpen && isRestaurantOpen);
         const dietaryCheck = dietaryOption === 'all' || restaurant.dietaryOptions.some(option => option.toLowerCase() === dietaryOption.toLowerCase());
+        const foodTypeCheck = foodType === 'all' || menu.some(option => option.type.toLowerCase() === foodType.toLowerCase());
 
-        return distanceCheck && priceCheck && openCheck && dietaryCheck;
+        return distanceCheck && priceCheck && openCheck && dietaryCheck && foodTypeCheck;
     });
-    displayRestaurants(filteredRestaurants);
+
+    
+    const input = document.getElementById('search-bar-input').value.toLowerCase();
+    const searchFilteredData = filteredRestaurants.filter(restaurant => 
+        restaurant.name.toLowerCase().includes(input) || 
+        restaurant.location.toLowerCase().includes(input)
+    );
+    displayRestaurants(searchFilteredData);
 }
 
 function displayRestaurants(filteredRestaurants) {

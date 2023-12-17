@@ -52,7 +52,8 @@ function createRestaurantElement(data) {
 
     const dietaryOptionsP = document.createElement('p');
     dietaryOptionsP.className = 'dietary-options';
-    dietaryOptionsP.textContent = 'Dietary Options: ';
+    // dietaryOptionsP.textContent = 'Dietary Options: ';
+    dietaryOptionsP.textContent = 'Diet Options: ';
     data.dietaryOptions.forEach(option => {
         const className = dieteryOptionsMap[option.toLowerCase()]
         const icon = document.createElement('i');
@@ -91,7 +92,7 @@ export function renderRestaurants(restaurants, containerSelector) {
 }
 
 const dieteryOptionsMap = {
-    "vegan": 'fa-solid fa-v',
+    "vegan": 'fa-solid fa-carrot',
     "halal": 'fa-solid fa-square-h',
     "vegetarian": 'fa-solid fa-leaf',
     "kosher": 'fa-brands fa-kickstarter',

@@ -13,20 +13,22 @@
           "calories": 600,
           "fat": 20,
           "protein": 5,
-          "sugar": 3
+          "sugar": 3,
+          "type": "Pasta"
         },
         {
-          "name": "Margherita Pizza",
-          "price": 7.99,
-          "halal": true,
-          "vegetarian": true,
+          "name": "Beef Burger",
+          "price": 11.99,
+          "halal": false,
+          "vegetarian": false,
           "vegan": false,
           "nutritionalInfo": true,
-          "allergens": ["Wheat", "Dairy"],
-          "calories": 800,
-          "fat": 30,
-          "protein": 2,
-          "sugar": 5
+          "allergens": ["Wheat"],
+          "calories": 1200,
+          "fat": 32,
+          "protein": 22,
+          "sugar": 5,
+          "type": "Burger"
         },
         {
           "name": "Vegan Burger",
@@ -39,7 +41,8 @@
           "calories": 450,
           "fat": 10,
           "protein": 10,
-          "sugar": 2
+          "sugar": 2,
+          "type": "Burger"
         },
         {
           "name": "Chicken Caesar Salad",
@@ -52,20 +55,22 @@
           "calories": 200,
           "fat": 5,
           "protein": 5,
-          "sugar": 3
+          "sugar": 3,
+          "type": "Salad"
         },
         {
-          "name": "Vegetable Stir Fry",
-          "price": 13.49,
-          "halal": false,
+          "name": "Greek Salad",
+          "price": 9.49,
+          "halal": true,
           "vegetarian": true,
           "vegan": true,
           "nutritionalInfo": true,
-          "allergens": [],
+          "allergens": ["Dairy"],
           "calories": 350,
           "fat": 10,
           "protein": 5,
-          "sugar": 3
+          "sugar": 3,
+          "type": "Salad"
         }
       ]
     },
@@ -84,7 +89,8 @@
             "calories": 600,
             "fat": 20,
             "protein": 5,
-            "sugar": 3
+            "sugar": 3,
+            "type": "Pasta"
           },
           {
             "name": "Margherita Pizza",
@@ -97,7 +103,8 @@
             "calories": 800,
             "fat": 30,
             "protein": 2,
-            "sugar": 5
+            "sugar": 5,
+            "type": "Pizza"
           },
           {
             "name": "Vegan Burger",
@@ -110,7 +117,8 @@
             "calories": 450,
             "fat": 10,
             "protein": 10,
-            "sugar": 2
+            "sugar": 2,
+            "type": "Burger"
           },
           {
             "name": "Chicken Caesar Salad",
@@ -123,7 +131,8 @@
             "calories": 200,
             "fat": 5,
             "protein": 5,
-            "sugar": 3
+            "sugar": 3,
+            "type": "Salad"
           },
           {
             "name": "Vegetable Stir Fry",
@@ -136,13 +145,14 @@
             "calories": 350,
             "fat": 10,
             "protein": 5,
-            "sugar": 3
+            "sugar": 3,
+            "type": "Vegetable"
           }
         ]
       },
 
       {
-        "restaurantName": "Bistro @ Mary Keys Residence",
+        "restaurantName": "Bistro @ Mary Keyes",
         "menu": [
           {
             "name": "Pasta Carbonara",
@@ -155,7 +165,8 @@
             "calories": 600,
             "fat": 20,
             "protein": 5,
-            "sugar": 3
+            "sugar": 3,
+            "type": "Pasta"
           },
           {
             "name": "Margherita Pizza",
@@ -168,7 +179,8 @@
             "calories": 800,
             "fat": 30,
             "protein": 2,
-            "sugar": 5
+            "sugar": 5,
+            "type": "Pizza"
           },
           {
             "name": "Vegan Burger",
@@ -181,7 +193,8 @@
             "calories": 450,
             "fat": 10,
             "protein": 10,
-            "sugar": 2
+            "sugar": 2,
+            "type": "Burger"
           },
           {
             "name": "Chicken Caesar Salad",
@@ -194,7 +207,8 @@
             "calories": 200,
             "fat": 5,
             "protein": 5,
-            "sugar": 3
+            "sugar": 3,
+            "type": "Salad"
           },
           {
             "name": "Vegetable Stir Fry",
@@ -202,12 +216,47 @@
             "halal": false,
             "vegetarian": true,
             "vegan": true,
+            "kosher": true,
             "nutritionalInfo": true,
             "allergens": [],
             "calories": 350,
             "fat": 10,
             "protein": 5,
-            "sugar": 3
+            "sugar": 3,
+            "type": "Vegetable"
+          }
+        ]
+      },
+      {
+        "restaurantName": "La Piazza",
+        "menu": [
+          {
+            "name": "Beef Burger",
+            "price": 15.99,
+            "halal": false,
+            "vegetarian": false,
+            "vegan": false,
+            "nutritionalInfo": true,
+            "allergens": ["Wheat"],
+            "calories": 600,
+            "fat": 20,
+            "protein": 5,
+            "sugar": 3,
+            "type": "Burger"
+          },
+          {
+            "name": "Cheese Pizza",
+            "price": 5.00,
+            "halal": false,
+            "vegetarian": false,
+            "vegan": false,
+            "nutritionalInfo": true,
+            "allergens": ["Wheat", "Dairy"],
+            "calories": 800,
+            "fat": 30,
+            "protein": 2,
+            "sugar": 5,
+            "type": "Pizza"
           }
         ]
       }

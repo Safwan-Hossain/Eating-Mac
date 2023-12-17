@@ -3,14 +3,23 @@ body {
   background-color: rgb(65, 9, 9);
   margin: 0;
   padding: 0;
+  padding-bottom: 25px;
   color: #fff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
 }
 
 /* ====== LOGO SPACE ====== */
 
 .logo-space {
-  width: 100%;
+  width: 98%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +27,7 @@ body {
   padding-top: 10px;
   background-color: rgb(122, 0, 60);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .logo-space h1 {
@@ -35,7 +44,6 @@ body {
 
 #logo {
   width: 50px;
-  margin-right: 10px;
 }
 
 /* ====== SEARCH BAR ====== */
@@ -95,7 +103,9 @@ body {
 .restaurant-button img {
   border-radius: 7px 0px 0px 7px;
   height: 100%;
-  object-fit: cover;
+  max-width: 224px;
+  object-fit: cover; 
+  object-position: center;
   margin: 0;
   margin-right: 20px;
 }
@@ -105,6 +115,7 @@ body {
   font-weight: bold;
   color: rgb(40, 40, 40);
   margin-bottom: 5px;
+  
 }
 
 .title-area {
@@ -112,6 +123,7 @@ body {
   flex-direction: column;
   /* align-self: start;
   margin-top: 3%; */
+  width: 32%;
   text-align: start;
 }
 
@@ -144,14 +156,14 @@ body {
   display: flex;
   flex-direction: row;
   margin-top: 1%;
-  margin-left: 24%;
-  width: 40%;
+  margin-right:10%;
+  width: 45%;
   min-width: 600px;
 }
 
 .result-list {
   flex-grow: 4; 
-  margin-left: 5%;
+  margin-left: 3%;
   /* width: 30%; */
   min-width: 600px;
   overflow-y: scroll;
@@ -159,7 +171,7 @@ body {
 }
 
 .filter-panel {
-  height: 250px;
+  height: 320px;
   flex-grow: 1; 
   padding: 15px;
   border-radius: 10px;
@@ -238,19 +250,25 @@ body {
 }
 
 /* SCROLL BAR */
-::-webkit-scrollbar-track {
+#content-area ::-webkit-scrollbar-track {
   background-color: #f5f5f5; 
   border-radius: 10px; 
 }
 
-::-webkit-scrollbar-thumb {
+#content-area ::-webkit-scrollbar-thumb {
   margin-left: 200px;
   background-color: #888; 
   border-radius: 10px; 
   border: 3px solid #f5f5f5; 
 }
 
-::-webkit-scrollbar {
+#content-area ::-webkit-scrollbar {
   width: 12px; 
   height: 12px; 
 }
+
+::-webkit-scrollbar {
+  width: 0; 
+  height: 0; 
+}
+

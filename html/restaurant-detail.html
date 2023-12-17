@@ -12,24 +12,28 @@
 <body>
     <div class="logo-space">
         <img id = "logo" src="../assets/mac-logo.png" alt="">
-        <h1>  EATING <b>@</b> MAC</h1>
+        <a href="homepage.html" style="text-decoration: none; color: inherit;">
+            <h1>EATING <b>@</b> MAC</h1>
+        </a>
         <div id="h2-divider">
-             <h2 id="restaurant-heading"></h2>
-             <button id="mapLink"><img src="../assets/mapicon.png" alt=""></button>
+             <!-- <h2 id="restaurant-heading"></h2> -->
+             <!-- <button id="mapLink"><img src="../assets/mapicon.png" alt=""></button> -->
         </div>
     </div>
 
     <div id="content-section">
+        
+        <h2 id="restaurant-heading"></h2>
         <div class="filter-panel">
             <h3>Filters</h3>            
-            <div class="filter-option">
+            <!-- <div class="filter-option">
                 <input type="checkbox" id="open-now" name="open-now">
                 <label for="open-now">Open Now</label>
             </div>
             <div class="filter-option">
                 <label for="distance-range">Max Distance: <span id="distance-range-value">10</span> km</label>
                 <input type="range" id="distance-range" min="1" max="20" step="1" oninput="updateDistanceValue(this.value)">
-            </div>
+            </div> -->
             <div class="filter-option">
                 <label for="price-range">Max Price: <span id="price-range-value">30</span>$</label>
                 <input type="range" id="price-range" min="5" max="50" step="5" oninput="updateRangeValue(this.value)">
@@ -41,21 +45,31 @@
                     <option value="vegetarian">Vegetarian</option>
                     <option value="vegan">Vegan</option>
                     <option value="halal">Halal</option>
+                    <option value="kosher">Kosher</option>
                 </select>
             </div>
         </div>
-        
         <div id="row-of-elements">
-            <div class="restaurant-details">
-                <p>Location: Health Science Building</p>
-                <p>Hours: 8:00 AM - 5:00 PM</p>
-                <p>Rating: ★★★★☆</p>
-                <p>Dietary Options: <i class="fa-solid fa-square-h" title="Halal"></i><i class="fa-solid fa-leaf" title="Vegetarian"></i></p>
-                <p>Price Range: $10 - $30</p>
+            <div id="details-and-map">
+
+                <div class="restaurant-details">
+                    <p>Location: Health Science Building</p>
+                    <p>Hours: 8:00 AM - 5:00 PM</p>
+                    <p>Rating: ★★★★☆</p>
+                    <p>Dietary Options: <i class="fa-solid fa-square-h" title="Halal"></i><i class="fa-solid fa-leaf" title="Vegetarian"></i></p>
+                    <p>Price Range: $10 - $30</p>
+                </div>
+                <div id="map">
+                    <i class="fa-solid fa-map-pin" style="color: #ffffff;"></i>
+                </div>
             </div>
 
-            <div class="menu-list">
-                <!-- JS script code adds menu items here -->
+            <div class="menu-list-background">
+                <h1 id="menu-title">MENU</h1>
+                <div class="menu-list">
+                
+                    <!-- JS script code adds menu items here -->
+                </div>
             </div>
         </div>
     </div>
@@ -99,6 +113,7 @@
             vegetarian: 'fa-solid fa-leaf',
             vegan: 'fa-solid fa-carrot',
             halal: 'fa-solid fa-square-h',
+            kosher: 'fa-brands fa-kickstarter'
         };
         
         document.addEventListener('DOMContentLoaded', () => {
@@ -111,7 +126,7 @@
 
                 if (selectedRestaurant) {
                     const restaurantHeading = document.getElementById('restaurant-heading');
-                    restaurantHeading.textContent = selectedRestaurant.name;
+                    restaurantHeading.textContent = selectedRestaurant.name.toUpperCase();
 
                     displayRestaurantDetails(selectedRestaurant);
 
@@ -121,7 +136,8 @@
                     });
 
                     // Add event listener to the mapLink button
-                    const mapLinkButton = document.getElementById('mapLink');
+                    // const mapLinkButton = document.getElementById('mapLink');
+                    const mapLinkButton = document.getElementById('map');
                     mapLinkButton.addEventListener('click', () => {
                         openGoogleMaps(selectedRestaurant.googleMapsLink);
                     });
@@ -137,11 +153,13 @@
 
 
                     const menuList = document.querySelector('.menu-list');
+                    console.log(menuList);
                     menuList.addEventListener('click', (event) => {
                         const target = event.target;
                         if (target.classList.contains('fa-info-circle')) {
                             const menuItem = target.closest('.menu-item');
                             const itemIndex = Array.from(menuItem.parentNode.children).indexOf(menuItem);
+                            console.log( Array.from(menuItem.parentNode.children))
                             openMenuModal(menuItemsData[itemIndex]); // Use menuItemsData here
                         }
                         const closeButton = document.querySelector('.close');
@@ -164,19 +182,19 @@
             detailsDiv.className = 'restaurant-details';
 
             const locationP = document.createElement('p');
-            locationP.textContent = `Location: ${restaurant.location}`;
+            locationP.innerHTML  = `<strong>Location:</strong> ${restaurant.location}`;
             detailsDiv.appendChild(locationP);
 
             const hoursP = document.createElement('p');
-            hoursP.textContent = `Hours: ${restaurant.openingTime} - ${restaurant.closingTime}`;
+            hoursP.innerHTML  = `<strong>Hours:</strong> ${restaurant.openingTime} - ${restaurant.closingTime}`;
             detailsDiv.appendChild(hoursP);
 
             const ratingP = document.createElement('p');
-            ratingP.textContent = `Rating: ${restaurant.rating}`;
+            ratingP.innerHTML  = `<strong>Rating:</strong> ${restaurant.rating}`;
             detailsDiv.appendChild(ratingP);
 
             const dietaryOptionsP = document.createElement('p');
-            dietaryOptionsP.textContent = 'Dietary Options: ';
+            dietaryOptionsP.innerHTML  = `<strong>Dietary Options:</strong> `;
             restaurant.dietaryOptions.forEach(option => {
                 const className = dieteryOptionsMap[option.toLowerCase()];
                 const icon = document.createElement('i');
@@ -222,8 +240,8 @@
         function displayMenu(menu) {
             const menuList = document.querySelector('.menu-list');
 
-            menuList.innerHTML = '';
 
+            menuList.innerHTML = '';
             menu.forEach(item => {
                 const menuItem = document.createElement('div');
                 menuItem.className = 'menu-item';
@@ -231,6 +249,7 @@
                 const itemDetails = document.createElement('div');
                 const itemName = document.createElement('p');
                 itemName.textContent = item.name;
+                itemName.style.fontWeight = 'bold'; 
                 const itemPrice = document.createElement('p');
                 itemPrice.textContent = `$${item.price.toFixed(2)}`;
 
@@ -246,6 +265,9 @@
                 }
                 if (item.vegan) {
                     itemIcons.innerHTML += '<i class="fa-solid fa-carrot" title="Vegan"></i>';
+                }
+                if (item.kosher) {
+                    itemIcons.innerHTML += '<i class="fa-brands fa-kickstarter" title="Kosher"></i>';
                 }
                 if (item.nutritionalInfo) {
                     itemIcons.innerHTML += '<i class="fa-solid fa-info-circle" title="More Info"></i>';
@@ -291,6 +313,5 @@
         }
 
     </script>
-    <script  type="module" src="../scripts/main.js"></script>
 </body>
 </html>

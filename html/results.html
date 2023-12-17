@@ -12,9 +12,11 @@
 <body>
     <div class="logo-space">
         <img id = "logo" src="../assets/mac-logo.png" alt="">
-        <h1>  EATING <b>@</b> MAC</h1>
+        <a href="homepage.html" style="text-decoration: none; color: inherit;">
+            <h1>EATING <b>@</b> MAC</h1>
+        </a>
         <div class="search-bar">
-          <input type="search" placeholder="Search...">
+          <input id="search-bar-input" type="search" placeholder="Search...">
         </div>
     </div>
     <div id="content-area">
@@ -39,12 +41,24 @@
                     <option value="vegetarian">Vegetarian</option>
                     <option value="vegan">Vegan</option>
                     <option value="halal">Halal</option>
+                    <option value="kosher">Kosher</option>
+                </select>
+            </div>
+            <div class="filter-option">
+                <label for="food-type">Food Types</label>
+                <select id="food-type">
+                    <option value="all">All</option>
+                    <option value="pasta">Pasta</option>
+                    <option value="pizza">Pizza</option>
+                    <option value="burger">Burger</option>
+                    <option value="salad">Salad</option>
+                    <option value="vegetable">Vegetable</option>
                 </select>
             </div>
         </div>
         
         <div class="result-list">
-            <button class="restaurant-button">
+            <!-- <button class="restaurant-button">
                 <img src="../assets/restaurants/williams-cafe-health-sci.jpg" alt="Restaurant A">
                 <div class="title-area">
                     <span class="restaurant-name">Williams Fresh Cafe</span>
@@ -65,7 +79,7 @@
                     </p>
                     <p class="distance"><i class="fa-solid fa-map-pin"></i> 1km </p>
                 </div>
-            </button>
+            </button> -->
         </div>
     </div>
     
