@@ -23,7 +23,7 @@
         "minimumPurchase": "7.99",
         "dietaryOptions": ["Halal", "Vegetarian", "Vegan"],
         "distance": "2",
-        "imageSrc": "../../assets/restaurants/centro-commons.jpg",
+        "imageSrc": "../assets/restaurants/centro-commons.jpg",
         "googleMapsLink": "https://www.google.com/maps/place/Centro/@43.2655886,-79.9217753,17z/data=!3m1!4b1!4m6!3m5!1s0x882c85ff1543fcd5:0x6bd51fb877f54ab4!8m2!3d43.2655886!4d-79.9192004!16s%2Fg%2F11bwnbjwwp?entry=ttu"
     },
     {
@@ -36,7 +36,7 @@
         "minimumPurchase": "7.99",
         "dietaryOptions": ["Halal", "Vegetarian", "Vegan", "Kosher"],
         "distance": "2",
-        "imageSrc": "../../assets/restaurants/bistro.jpg",
+        "imageSrc": "../assets/restaurants/bistro.jpg",
         "googleMapsLink": "https://www.google.com/maps/place/East+Meets+West+Bistro/@43.2623837,-79.9234985,18z/data=!3m1!4b1!4m6!3m5!1s0x882c84ac53ac080f:0xfd058a2866aa7849!8m2!3d43.2623837!4d-79.9225615!16s%2Fg%2F11bwqgchxk?entry=ttu"
     },
     {
@@ -49,7 +49,7 @@
         "minimumPurchase": "5",
         "dietaryOptions": [],
         "distance": "3",
-        "imageSrc": "../../assets/restaurants/la-piazza.jpg",
+        "imageSrc": "../assets/restaurants/la-piazza.jpg",
         "googleMapsLink": "https://www.google.com/maps/place/La+Piazza/@43.2635081,-79.9173566,19z/data=!3m2!4b1!5s0x882c9b5369b3c8e1:0x4fcdd566249528d0!4m6!3m5!1s0x882c9b53424aa751:0x6726e50cd5bc4ea5!8m2!3d43.2635081!4d-79.9173566!16s%2Fg%2F11bzrfmllc?entry=ttu"
     }
 ]

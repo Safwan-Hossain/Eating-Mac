@@ -9,11 +9,12 @@ async function init() {
     const filter = getQueryParam('filter');
     const foodCategory = getQueryParam('category');
     if (searchContent !== null && searchContent.trim() !== '') {
+        console.log(searchContent)
         document.getElementById('search-bar-input').textContent = searchContent;
         document.getElementById('search-bar-input').value = searchContent;
         filterRestaurants();
     }
-    if (filter === 'open-now') {
+    else if (filter === 'open-now') {
         document.getElementById('open-now').checked = true;
         filterRestaurants();
     }
